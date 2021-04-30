@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit wish</title>
+    <style>
+        header{
+            display: flex;
+            justify-content: space-between;
+        }
+        #cancel{
+            padding: 1px 6px;
+            border-style: outset;
+            border: grey solid thin; 
+            text-decoration: none;
+            background-color: #efefef;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>Hello {{user.first_name}} ! Let's make an edit</h2> 
+        <a href="/logout">logout</a>
+    </header>
+
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+      <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+        {{ message }}
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    <!--  -->
+    <form action="/wishes/update/{{wish.id}}" method="POST">
+        {% csrf_token%}
+        <p>I wish for<input type="text" name="item" value="{{wish.item}}" /></p>
+        <p>Description<input type="text" name="desc" value="{{wish.description}}" /></p>
+        <a id="cancel" href="/wishes">Cancel</a>
+        <button type="submit">Edit</button>
+    </form>
+</body>
+</html>

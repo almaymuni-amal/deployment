@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View stats</title>
+    <style>
+        header{
+            display: flex;
+            justify-content: space-between;
+            width: 860px;
+        }
+        .header{
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>Hello {{user.first_name}} ! These are your stats</h2> 
+        <div class="header">
+            <a href="/wishes">Dashboard</a>
+            <a href="/logout">logout</a>
+        </div>
+    </header>
+    <p>Total wishes granted so far for all users: {{all_granted|length}}</p>
+    <p>Your granted wishes:{{logged_user_granted|length}}</p>
+    <p>Your pending wishes:{{logged_user_pending|length}}</p>
+</body>
+</html>
